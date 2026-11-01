@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow — Internship Project Report</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --code-bg: #0f172a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background-color: var(--bg);
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--surface);
+      padding: 3rem 3.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+    }
+    h1 {
+      font-size: 1.85rem;
+      color: #0f172a;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    h2 {
+      font-size: 1.35rem;
+      color: #1e3a8a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+      color: #334155;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    p { margin-bottom: 1rem; }
+    blockquote {
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      color: #1e40af;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.92rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.85rem;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    tr:nth-child(even) td { background-color: #f8fafc; }
+    ul { margin: 0 0 1rem 1.5rem; }
+    li { margin-bottom: 0.35rem; }
+    pre {
+      background: var(--code-bg);
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: Consolas, Monaco, "Courier New", monospace;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    code {
+      background: #f1f5f9;
+      color: #d97706;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.88em;
+    }
+    pre code { background: none; color: inherit; padding: 0; }
+    .print-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+    .print-btn:hover { background: #1d4ed8; }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { border: none; box-shadow: none; padding: 0; max-width: 100%; }
+      .print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
+  <div class="container">
+    <h1>FULL-STACK WEB DEVELOPMENT INTERNSHIP PROJECT REPORT</h1>
+<h2>Project Title</h2>
+<p><strong>TaskFlow — Student Task Management System</strong></p>
+<p><strong>Submitted by:</strong> [Your Name]  </p>
+<p><strong>Course/Branch:</strong> [Course and Branch]  </p>
+<p><strong>College:</strong> [College Name]  </p>
+<p><strong>Internship Organization:</strong> [Organization Name]  </p>
+<p><strong>Internship Duration:</strong> [Start Date – End Date]  </p>
+<p><strong>Faculty/Industry Guide:</strong> [Guide Name]</p>
+<blockquote>Fill in the bracketed information. Revise statements to reflect the work you personally performed and what you can demonstrate.</blockquote>
+<h2>1. Abstract</h2>
+<p>TaskFlow is a full-stack web application designed to help students manage academic and personal tasks through a single interface. The system supports user registration and login, creation and modification of tasks, priority selection, due dates, task-status tracking, search, and filtering. It uses HTML5, CSS3, and JavaScript for the frontend, Node.js for the backend, and SQLite for data storage. The backend exposes REST-style API endpoints that handle user authentication and task operations. Each student&#39;s data is stored separately and remains available after restarting the application. The project demonstrates the integration of frontend interfaces, backend logic, database management, and basic application security concepts.</p>
+<h2>2. Introduction</h2>
+<p>Students often manage numerous activities such as assignments, project submissions, examination preparation, and personal reminders. Keeping track of these responsibilities manually can lead to missed deadlines and poor organization. The TaskFlow application provides a centralized platform where students can create tasks, assign priorities, update progress, and monitor pending work using a web browser.</p>
+<p>The application illustrates the basic working principles of a full-stack system. The browser provides a user-friendly interface, the backend processes requests, and SQLite stores records persistently.</p>
+<h2>3. Problem Statement</h2>
+<p>Manual task tracking using notebooks or scattered notes makes it difficult to monitor completion status, prioritize urgent work, and view upcoming deadlines. A simple, accessible web-based solution is needed to organize tasks and display progress in one place.</p>
+<h2>4. Objectives</h2>
+<ul>
+<li>Develop a responsive and user-friendly task management interface.</li>
+<li>Implement user registration, login, and logout.</li>
+<li>Perform Create, Read, Update, and Delete (CRUD) operations on tasks.</li>
+<li>Store user and task information in an SQLite database.</li>
+<li>Provide priority levels, status tracking, due dates, search, and filters.</li>
+<li>Demonstrate client–server communication using REST-style APIs and JSON.</li>
+</ul>
+<h2>5. Technology Used</h2>
+<p><strong>HTML5:</strong> Creates the structure of the pages, forms, and task sections.  </p>
+<p><strong>CSS3:</strong> Provides responsive page layouts, colors, cards, and styling.  </p>
+<p><strong>JavaScript:</strong> Processes user actions, validates forms in the browser, calls backend APIs, and updates the displayed content.  </p>
+<p><strong>Node.js:</strong> Runs the backend server and handles client requests.  </p>
+<p><strong>SQLite:</strong> Stores user accounts, sessions, and task records in a local relational database.  </p>
+<p><strong>VS Code / Browser:</strong> Can be used for development, debugging, and testing.</p>
+<h2>6. System Architecture</h2>
+<pre><code>           STUDENT / WEB BROWSER
+                    |
+                    v
+         HTML + CSS + JAVASCRIPT
+                    |
+               Fetch API
+              (JSON / HTTP)
+                    |
+                    v
+           NODE.JS BACKEND
+    (Routing, Validation, Sessions)
+                    |
+                    v
+              SQLITE DATABASE
+         (Users, Sessions, Tasks)</code></pre>
+<p><strong>Working:</strong> The student interacts with the frontend. JavaScript sends API requests to the Node.js backend. The server validates requests, checks the signed-in session, and performs database operations. It sends JSON responses back to the browser, which updates the task list and dashboard automatically.</p>
+<h2>7. Modules</h2>
+<h3>7.1 User Authentication</h3>
+<p>A user can create an account using their name, email, and password. Passwords are stored as scrypt-derived hashes rather than plaintext. After a successful login, the backend sets an HTTP-only session cookie, allowing the student to access their task data. Logout invalidates the session.</p>
+<h3>7.2 Task Management</h3>
+<p>The task module allows students to add a task with a title, optional description, priority, status, and due date. Existing tasks can be edited or deleted. Data is stored in SQLite so the task list remains available between sessions.</p>
+<h3>7.3 Dashboard</h3>
+<p>The dashboard displays the total number of tasks, tasks pending, tasks in progress, and tasks completed. These summary counts update when tasks change.</p>
+<h3>7.4 Search and Filtering</h3>
+<p>Students can search task titles and descriptions and filter by active or completed status. Tasks whose due dates have passed are labeled as overdue unless marked completed.</p>
+<h2>8. Database Design</h2>
+<h3>Table 1: <code>users</code></h3>
+<table>
+<tr><th>Column</th><th>Purpose</th></tr>
+<tr><td>id</td><td>Unique identifier, primary key</td></tr>
+<tr><td>name</td><td>Student&#39;s name</td></tr>
+<tr><td>email</td><td>Unique email address</td></tr>
+<tr><td>password_hash</td><td>Salted password hash</td></tr>
+<tr><td>created_at</td><td>Registration timestamp</td></tr>
+</table>
+<h3>Table 2: <code>tasks</code></h3>
+<table>
+<tr><th>Column</th><th>Purpose</th></tr>
+<tr><td>id</td><td>Unique task identifier, primary key</td></tr>
+<tr><td>user_id</td><td>References owner in users table</td></tr>
+<tr><td>title</td><td>Task heading</td></tr>
+<tr><td>description</td><td>Optional details</td></tr>
+<tr><td>priority</td><td>low / medium / high</td></tr>
+<tr><td>status</td><td>pending / in_progress / completed</td></tr>
+<tr><td>due_date</td><td>Optional due date</td></tr>
+<tr><td>created_at</td><td>Record creation time</td></tr>
+<tr><td>updated_at</td><td>Record modification time</td></tr>
+</table>
+<h3>Table 3: <code>sessions</code></h3>
+<p>Stores a one-way hash of the user&#39;s session token, the associated user ID, and the session expiration time.</p>
+<p><strong>Relationship:</strong> One user can have many tasks (one-to-many). Each task belongs to one user.</p>
+<h2>9. Functional Requirements</h2>
+<p class="numbered-item">The system shall allow users to register and log in.</p>
+<p class="numbered-item">The system shall allow authenticated users to create and view tasks.</p>
+<p class="numbered-item">The system shall allow users to edit and delete only their own tasks.</p>
+<p class="numbered-item">The system shall store priority, status, and due-date values for each task.</p>
+<p class="numbered-item">The system shall display task counts and allow basic search and filtering.</p>
+<p class="numbered-item">The system shall preserve records after the application is restarted.</p>
+<h2>10. Non-Functional Requirements</h2>
+<ul>
+<li><strong>Usability:</strong> A clear, readable interface with straightforward forms.</li>
+<li><strong>Responsiveness:</strong> Layout adapts to desktop and mobile screen sizes.</li>
+<li><strong>Data integrity:</strong> Database foreign keys and field constraints help protect records.</li>
+<li><strong>Basic security:</strong> Password hashing, server-side authentication, and account-specific queries.</li>
+<li><strong>Maintainability:</strong> Separate frontend files and backend server logic.</li>
+</ul>
+<h2>11. Implementation Steps</h2>
+<p class="numbered-item">Identify requirements and design the task interface.</p>
+<p class="numbered-item">Create HTML pages and responsive CSS styling.</p>
+<p class="numbered-item">Write JavaScript for forms, task rendering, and HTTP requests.</p>
+<p class="numbered-item">Set up the Node.js HTTP server and API routes.</p>
+<p class="numbered-item">Create SQLite database tables for users, sessions, and tasks.</p>
+<p class="numbered-item">Connect frontend actions to the backend using the Fetch API.</p>
+<p class="numbered-item">Add login verification and user-specific database access.</p>
+<p class="numbered-item">Test creation, editing, completion, deletion, and filtering of tasks.</p>
+<h2>12. Example Test Cases (perform and record your results)</h2>
+<table>
+<tr><th>Test case</th><th>Expected result</th></tr>
+<tr><td>Register with valid details</td><td>New account is created</td></tr>
+<tr><td>Register with existing email</td><td>Error message appears</td></tr>
+<tr><td>Log in with incorrect password</td><td>Access is denied</td></tr>
+<tr><td>Add a task</td><td>New task appears on dashboard</td></tr>
+<tr><td>Edit task priority</td><td>Priority changes and persists</td></tr>
+<tr><td>Mark task completed</td><td>Completed count increases</td></tr>
+<tr><td>Search for task</td><td>Matching tasks are displayed</td></tr>
+<tr><td>Delete task</td><td>Task is removed from list</td></tr>
+<tr><td>Restart server and sign in</td><td>Previous tasks are still available</td></tr>
+<tr><td>Try accessing another user&#39;s task</td><td>Server rejects the operation</td></tr>
+</table>
+<h2>13. Screenshots / Output</h2>
+<p><strong>Insert real screenshots from your running application:</strong></p>
+<ul>
+<li>Figure 1: Login page</li>
+<li>Figure 2: Registration page</li>
+<li>Figure 3: Task dashboard</li>
+<li>Figure 4: Create Task window</li>
+<li>Figure 5: Edit Task window</li>
+<li>Figure 6: Completed tasks filter</li>
+</ul>
+<h2>14. Advantages</h2>
+<p>TaskFlow provides a simple platform for personal productivity, a responsive interface, persistent task storage, basic data separation between users, and an easy-to-understand project structure suitable for a full-stack development demonstration.</p>
+<h2>15. Limitations</h2>
+<p>This is an educational project that runs locally on a Node.js server. It does not send email reminders, support team collaboration, or provide advanced analytics. Public deployment would require additional production security measures such as HTTPS, rate limiting, CSRF protection, and comprehensive testing.</p>
+<h2>16. Future Scope</h2>
+<p>The application can be enhanced with notifications before due dates, categories, calendar integration, team workspaces, progress charts, and cloud hosting.</p>
+<h2>17. Conclusion</h2>
+<p>TaskFlow demonstrates the key components of full-stack web development through a practical student task management application. The project combines frontend design, asynchronous API requests, server-side programming, authentication, and relational database operations. The implementation provides a foundation for understanding how user interfaces, backend services, and databases work together in real-world web applications.</p>
+<h2>18. References</h2>
+<ul>
+<li>Node.js Documentation: https://nodejs.org/docs/latest/api/</li>
+<li>MDN Web Docs: https://developer.mozilla.org/</li>
+<li>SQLite Documentation: https://www.sqlite.org/docs.html</li>
+</ul>
+<p><strong>Academic integrity note:</strong> This report is a starting template. Update it to match your internship&#39;s actual work, include your own screenshots/testing results, and follow your college&#39;s prescribed format.</p>
+  </div>
+</body>
+</html>

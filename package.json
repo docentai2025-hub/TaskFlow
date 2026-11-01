@@ -1,0 +1,18 @@
+{
+  "name": "taskflow-student-task-manager",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple full-stack student task manager using Node.js, SQLite, HTML, CSS and JavaScript.",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "taskflow": "./server.js"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "report": "node build-report.js"
+  },
+  "license": "MIT"
+}
