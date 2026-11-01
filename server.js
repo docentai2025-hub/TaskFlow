@@ -12,7 +12,8 @@ const crypto = require('node:crypto');
 const { DatabaseSync } = require('node:sqlite');
 
 const ROOT = __dirname;
-const DATA_DIR = path.join(ROOT, 'data');
+const isVercel = Boolean(process.env.VERCEL);
+const DATA_DIR = isVercel ? '/tmp' : path.join(ROOT, 'data');
 fs.mkdirSync(DATA_DIR, { recursive: true });
 const db = new DatabaseSync(path.join(DATA_DIR, 'taskflow.db'));
 db.exec(`
@@ -215,26 +216,30 @@ const server = http.createServer((req,res) => {
   });
 });
 
-let currentPort = PORT;
-let attempts = 0;
-const maxAttempts = 10;
+if (isVercel) {
+  module.exports = server;
+} else {
+  let currentPort = PORT;
+  let attempts = 0;
+  const maxAttempts = 10;
 
-server.on('error', (err) => {
-  if ((err.code === 'EADDRINUSE' || err.code === 'EACCES') && !process.env.PORT && attempts < maxAttempts) {
-    attempts++;
-    console.log(`Port ${currentPort} is unavailable (${err.code}). Trying port ${currentPort + 1}...`);
-    currentPort++;
-    server.listen(currentPort);
-  } else {
-    console.error(`Failed to start server on port ${currentPort}:`, err.message);
-    process.exit(1);
-  }
-});
+  server.on('error', (err) => {
+    if ((err.code === 'EADDRINUSE' || err.code === 'EACCES') && !process.env.PORT && attempts < maxAttempts) {
+      attempts++;
+      console.log(`Port ${currentPort} is unavailable (${err.code}). Trying port ${currentPort + 1}...`);
+      currentPort++;
+      server.listen(currentPort);
+    } else {
+      console.error(`Failed to start server on port ${currentPort}:`, err.message);
+      process.exit(1);
+    }
+  });
 
-server.listen(currentPort, () => {
-  console.log(`\n==================================================`);
-  console.log(` TaskFlow is running!`);
-  console.log(` Open in your browser: http://localhost:${currentPort}`);
-  console.log(` Press Ctrl+C to stop.`);
-  console.log(`==================================================\n`);
-});
+  server.listen(currentPort, () => {
+    console.log(`\n==================================================`);
+    console.log(` TaskFlow is running!`);
+    console.log(` Open in your browser: http://localhost:${currentPort}`);
+    console.log(` Press Ctrl+C to stop.`);
+    console.log(`==================================================\n`);
+  });
+}
